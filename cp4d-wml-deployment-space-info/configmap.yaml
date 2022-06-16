@@ -1,0 +1,70 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: zen-alert-cp4d-wml-deployment-space-info-monitor-extension
+  labels:
+    app: zen-adv
+    icpdata_addon: 'true'
+    icpdata_addon_version: 4.3.0
+    release: zen-adv
+data:
+  extensions: |
+    [
+      {
+        "extension_point_id": "zen_alert_monitor",
+        "extension_name": "zen_alert_cp4d_wml_deployment_space_info",
+        "display_name": "Watson Machine Learning Deployment Space Job Info",
+        "details": {
+          "name": "cp4d-wml-deployment-space-info",
+          "image": "${OPENSHIFT_IMAGE_REGISTRY}/cp4d-wml-deployment-space-info:latest",
+          "schedule": "*/2 * * * *",
+          "event_types": [
+            {
+              "name": "cp4d_wml_deployment_space_info_overall_count",
+              "simple_name": "Watson Machine Learning Deployment Space Info Overall Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Machine Learning Deployment Space Info Overall Count",
+              "long_description": "CP4D Watson Machine Learning Deployment Space Info Overall Count: <cp4d_wml_deployment_space_info_overall_count>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },              
+            {
+              "name": "cp4d_wml_deployment_space_deployed_count",
+              "simple_name": "Watson Machine Learning Deployment Space Deployed Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Machine Learning Deployment Space Deployed Count",
+              "long_description": "CP4D Watson Machine Learning Deployment Space Deployed Count: <cp4d_wml_deployment_space_deployed_count>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_wml_deployment_space_deployed_fail_count",
+              "simple_name": "Watson Machine Learning Deployment Space Deployed Fail Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Machine Learning Deployment Space Deployed Fail Count",
+              "long_description": "CP4D Watson Machine Learning Deployment Space Deployed Fail Count: <cp4d_wml_deployment_space_deployed_fail_count>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_wml_deployment_space_deployed_count_online",
+              "simple_name": "Watson Machine Learning Deployment Space Deployed Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Machine Learning Deployment Space Online Deployed Count",
+              "long_description": "CP4D Watson Machine Learning Deployment Space Online Deployed Count: <cp4d_wml_deployment_space_deployed_count_online>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_wml_deployment_space_deployed_count_batch",
+              "simple_name": "Watson Machine Learning Deployment Space Deployed Fail Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Machine Learning Deployment Space Batch Deployed Count",
+              "long_description": "CP4D Watson Machine Learning Deployment Space Batch Deployed Count: <cp4d_wml_deployment_space_deployed_count_batch>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            }            
+          ]
+        }
+      }
+    ]

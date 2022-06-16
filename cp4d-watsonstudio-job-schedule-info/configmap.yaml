@@ -1,0 +1,106 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: zen-alert-cp4d-watsonstudio-job-schedule-info-monitor-extension
+  labels:
+    app: zen-adv
+    icpdata_addon: 'true'
+    icpdata_addon_version: 4.3.0
+    release: zen-adv
+data:
+  extensions: |
+    [
+      {
+        "extension_point_id": "zen_alert_monitor",
+        "extension_name": "zen_alert_cp4d_watsonstudio_job_schedule_info",
+        "display_name": "Watson Stuido Job Info",
+        "details": {
+          "name": "cp4d-watsonstudio-job-schedule-info",
+          "image": "image-registry.openshift-image-registry.svc:5000/zen-40/cp4d-watsonstudio-job-schedule-info:latest",
+          "schedule": "*/4 * * * *",
+          "event_types": [
+            {
+              "name": "cp4d_watsonstudio_jobs_schedule_overall_count",
+              "simple_name": "Watson Stuido Scheduled Jobs Overall Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Stuido Scheduled Jobs Overall Count",
+              "long_description": "CP4D Watson Stuido Scheduled Jobs Overall Count: <cp4d_watsonstudio_jobs_schedule_overall_count>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_jobs_schedule_project_count",
+              "simple_name": "Watson Studio Project Scheduled Jobs Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Studio Project Scheduled Jobs",
+              "long_description": "CP4D Watson Studio Project Scheduled Jobs Count: <cp4d_watsonstudio_jobs_schedule_project_count>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_jobs_schedule_user_count",
+              "simple_name": "Watson Studio User Scheduled Jobs Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Studio Scheduled Jobs Overall Count per User",
+              "long_description": "CP4D Watson Studio Scheduled Jobs Overall Count per User: <cp4d_watsonstudio_jobs_schedule_user_overall_count>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_jobs_schedule_user_notebook_count",
+              "simple_name": "Watson Studio Scheduled Notobook Type Jobs Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Studio Scheduled Notebook Type Jobs Count",
+              "long_description": "CP4D Watson Studio Scheduled Notebook Type Jobs Count: <cp4d_watsonstudio_jobs_schedule_user_notebook_count>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_jobs_schedule_user_notebook_count",
+              "simple_name": "Watson Studio Scheduled Notobook Type Jobs Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Studio Scheduled Notebook Type Jobs Count",
+              "long_description": "CP4D Watson Studio Scheduled Notebook Type Jobs Count: <cp4d_watsonstudio_jobs_schedule_user_notebook_count>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_job_schedule_last_run_fail",
+              "simple_name": "Watson Studio Schedule Job Last Run Fail",
+              "alert_type": "platform",
+              "short_description": "Last Failed Run Information for each CP4D Watson Studio Scheduled Job",
+              "long_description": "Last Failed Run Information for each CP4D Watson Studio Scheduled Job: <cp4d_watsonstudio_job_schedule_last_run_fail>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_job_schedule_next_run_epoch_time",
+              "simple_name": "Watson Studio Schedule Next Run Epoch Time",
+              "alert_type": "platform",
+              "short_description": "Next Run Epoch Time in seconds for CP4D Watson Studio Scheduled Job",
+              "long_description": "Next Run Epoch Time in seconds for CP4D Watson Studio Scheduled Job: <cp4d_watsonstudio_jobs_schedule_next_run_epoch_time>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_job_schedule_last_run_duration_seconds",
+              "simple_name": "Watson Studio Scheduled Jobs Last Run Duration Seconds",
+              "alert_type": "platform",
+              "short_description": "Last Run Duration in seconds for CP4D Watson Studio Scheduled Job",
+              "long_description": "Last Run Duration in seconds for CP4D Watson Studio Scheduled Job: <cp4d_watsonstudio_job_schedule_last_run_duration_seconds>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_watsonstudio_job_schedule_last_run_epoch_time",
+              "simple_name": "Watson Studio Schedule Last Run Epoch Time",
+              "alert_type": "platform",
+              "short_description": "Last Run Epoch Time in seconds for CP4D Watson Studio Scheduled Job",
+              "long_description": "Last Run Epoch Time in seconds for CP4D Watson Studio Scheduled Job: <cp4d_watsonstudio_job_schedule_last_run_epoch_time>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            }
+          ]
+        }
+      }
+    ]

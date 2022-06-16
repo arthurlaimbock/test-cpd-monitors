@@ -1,0 +1,34 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: zen-alert-cp4d-cognos-task-info-monitor-extension
+  labels:
+    app: zen-adv
+    icpdata_addon: 'true'
+    icpdata_addon_version: 4.3.0
+    release: zen-adv
+data:
+  extensions: |
+    [
+      {
+        "extension_point_id": "zen_alert_monitor",
+        "extension_name": "zen_alert_cp4d_cognos_task_info",
+        "display_name": "Cognos Analytics Task Info",
+        "details": {
+          "name": "cp4d-cognos-task-info",
+          "image": "${OPENSHIFT_IMAGE_REGISTRY}/cp4d-cognos-task-info:latest",
+          "schedule": "*/2 * * * *",
+          "event_types": [
+            {
+              "name": "cp4d_cognos_task_last_status",
+              "simple_name": "Cognos Analytics Task Last Status",
+              "alert_type": "platform",
+              "short_description": "CP4D Cognos Analytics Task Last Status",
+              "long_description": "CP4D Cognos Analytics Task Last Status: <cp4d_cognos_task_last_status_success>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            }    
+          ]
+        }
+      }
+    ]

@@ -1,0 +1,43 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: zen-alert-cp4d-wkc-info-monitor-extension
+  labels:
+    app: zen-adv
+    icpdata_addon: 'true'
+    icpdata_addon_version: 4.3.0
+    release: zen-adv
+data:
+  extensions: |
+    [
+      {
+        "extension_point_id": "zen_alert_monitor",
+        "extension_name": "zen_alert_cp4d_wkc_info",
+        "display_name": "Watson Knowledge Catalog Info",
+        "details": {
+          "name": "cp4d-watson-knowledge-catalog-info",
+          "image": "${OPENSHIFT_IMAGE_REGISTRY}/cp4d-watson-knowledge-catalog-info:latest",
+          "schedule": "*/4 * * * *",
+          "event_types": [
+            {
+              "name": "cp4d_wkc_info_catalog_overall_count",
+              "simple_name": "Watson Knowledge Catalog Overall Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Knowledge Catalog Overall Count",
+              "long_description": "CP4D Watson Knowledge Catalog Overall Count: <cp4d_wkc_info_catalog_overall_count>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },              
+            {
+              "name": "cp4d_wkc_info_catalog_asset_count",
+              "simple_name": "Watson Knowledge Catalog Asset Count per WKC catalog",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Knowledge Catalog Asset Count per WKC catalog",
+              "long_description": "CP4D Watson Knowledge Catalog Asset Count per WKC catalog: <cp4d_wkc_info_catalog_asset_count>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            }
+          ]
+        }
+      }
+    ]

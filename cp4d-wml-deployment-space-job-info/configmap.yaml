@@ -1,0 +1,52 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: zen-alert-cp4d-wml-deployment-space-job-info-monitor-extension
+  labels:
+    app: zen-adv
+    icpdata_addon: 'true'
+    icpdata_addon_version: 4.3.0
+    release: zen-adv
+data:
+  extensions: |
+    [
+      {
+        "extension_point_id": "zen_alert_monitor",
+        "extension_name": "zen_alert_cp4d_wml_deployment_space_job_info",
+        "display_name": "Watson Machine Learning Deployment Space Job Info",
+        "details": {
+          "name": "cp4d-wml-deployment-space-job-info",
+          "image": "image-registry.openshift-image-registry.svc:5000/zen-40/cp4d-wml-deployment-space-job-info:latest",
+          "schedule": "*/2 * * * *",
+          "event_types": [
+            {
+              "name": "cp4d_wml_deployment_space_jobs_overall_count",
+              "simple_name": "Watson Machine Learning Deployment Space Jobs Info Overall Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Machine Learning Deployment Space Info Overall Count",
+              "long_description": "CP4D Watson Mechine Learning Deployment Space Info Overall Count: <cp4d_wml_deployment_space_jobs_overall_count>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },              
+            {
+              "name": "cp4d_wml_deployment_space_jobs_active_count",
+              "simple_name": "Watson Mechine Learning Deployment Space Acitve Job Count",
+              "alert_type": "platform",
+              "short_description": "CP4D Watson Mechine Learning Deployment Space Acitve Job Count",
+              "long_description": "CP4D Watson Mechine Learning Deployment Space Active Job Count: <cp4d_wml_deployment_space_jobs_active_count>",
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            },
+            {
+              "name": "cp4d_wml_deployment_space_job_last_status",
+              "simple_name": "Last status of Watson Mechine Learning Deployment Space Job",
+              "alert_type": "platform",
+              "short_description": "Last status of CP4D Watson Mechine Learning Deployment Space Job",
+              "long_description": "Last status of CP4D Watson Mechine Learning Deployment Space Job: <cp4d_wml_deployment_space_job_last_status>",                
+              "resolution": "none",
+              "reason_code_prefix": "80"
+            }       
+          ]
+        }
+      }
+    ]
